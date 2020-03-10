@@ -4,12 +4,6 @@ class OpenMpi < Formula
   url "https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.3.tar.bz2"
   sha256 "1402feced8c3847b3ab8252165b90f7d1fa28c23b6b2ca4632b6e4971267fd03"
 
-  bottle do
-    sha256 "3b143cf02a5345bb0d4df0777d3a34f806ff7fb66dc5d21993b8c4f218722ac7" => :catalina
-    sha256 "1600986b4774f6081191fe616cc70690d0174c4a32f4d7f280285ddc39970437" => :mojave
-    sha256 "71df1f5047b812b68f8b28f7a6c713f42389691b2269408c8d839f1922ab9e5c" => :high_sierra
-  end
-
   head do
     url "https://github.com/open-mpi/ompi.git"
     depends_on "autoconf" => :build
@@ -36,6 +30,7 @@ class OpenMpi < Formula
       --enable-ipv6
       --with-libevent=#{Formula["libevent"].opt_prefix}
       --with-sge
+      --enable-mpi-thread-multiple
     ]
     args << "--with-platform-optimized" if build.head?
 
